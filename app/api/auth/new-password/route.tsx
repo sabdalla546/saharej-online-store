@@ -52,7 +52,7 @@ export async function POST(req: Request) {
       id: existingToken.id,
     },
   });
-  return NextResponse.json({
+  /* return NextResponse.json({
     success: "password update",
-  });
+  });*/
 }
