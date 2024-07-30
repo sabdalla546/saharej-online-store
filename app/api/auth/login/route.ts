@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       status: 200,
     });
   }
-  if (existingUser.isTwoFactorEnabbled && existingUser.email) {
+  /*if (existingUser.isTwoFactorEnabbled && existingUser.email) {
     if (code) {
       const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
       if (!twoFactorToken) {
@@ -80,7 +80,7 @@ export async function POST(req: Request) {
       await sendTwoFactorTokenEmail(twoFactorToken.email, twoFactorToken.token);
       return { twoFactor: true };
     }
-  }
+  }*/
   try {
     await signIn("credentials", {
       email,
