@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 import { FormSeccess } from "./form-success";
 import { FormError } from "./form-error";
 import axios from "axios";
+import { Suspense } from "react";
 
 const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>("");

@@ -42,18 +42,18 @@ export async function POST(req: Request) {
       status: 200,
     });
   }
-  /*if (existingUser.isTwoFactorEnabbled && existingUser.email) {
+  if (existingUser.isTwoFactorEnabbled && existingUser.email) {
     if (code) {
       const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
       if (!twoFactorToken) {
-        return { error: "invalid code" };
+        return NextResponse.json({ error: "invalid code" });
       }
       if (twoFactorToken.token !== code) {
-        return { error: "invalid code" };
+        return NextResponse.json({ error: "invalid code" });
       }
       const hasExpired = new Date(twoFactorToken.expires) < new Date();
       if (hasExpired) {
-        return { error: "code expierd" };
+        return NextResponse.json({ error: "code expierd" });
       }
       await db.twoFactowToken.delete({
         where: {
@@ -78,9 +78,9 @@ export async function POST(req: Request) {
     } else {
       const twoFactorToken = await generateTwoFactorToken(existingUser.email);
       await sendTwoFactorTokenEmail(twoFactorToken.email, twoFactorToken.token);
-      return { twoFactor: true };
+      return NextResponse.json({ twoFactor: true });
     }
-  }*/
+  }
   try {
     await signIn("credentials", {
       email,
