@@ -10,12 +10,13 @@ export async function POST(req: Request) {
   const { token } = body;
   const { values } = body;
   if (!token) {
-    return { error: "missing token" };
+    return NextResponse.json({ error: "missing token", status: 400 });
   }
   const validatedField = NewPasswodSchema.safeParse(values);
   if (!validatedField.success) {
     return NextResponse.json({
       error: "invalid password",
+      status: 400,
     });
   }
   const { password } = validatedField.data;
@@ -23,12 +24,14 @@ export async function POST(req: Request) {
   if (!existingToken) {
     return NextResponse.json({
       error: "invalid token",
+      status: 400,
     });
   }
   const hasExpired = new Date(existingToken.expires) < new Date();
   if (hasExpired) {
     return NextResponse.json({
       error: "token has expired",
+      status: 400,
     });
   }
 
@@ -36,6 +39,7 @@ export async function POST(req: Request) {
   if (!existingUser) {
     return NextResponse.json({
       error: "email not exist",
+      status: 400,
     });
   }
   const hashedPassword = await bcryptjs.hash(password, 10);
@@ -52,7 +56,8 @@ export async function POST(req: Request) {
       id: existingToken.id,
     },
   });
-  /* return NextResponse.json({
+  return NextResponse.json({
     success: "password update",
-  });*/
+    status: 400,
+  });
 }

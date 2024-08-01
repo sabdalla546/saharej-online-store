@@ -2,7 +2,6 @@ import { format } from "date-fns";
 import { db } from "@/lib/db";
 import { OrderClient } from "./_component/billboard-clients";
 import { OrdersColumn } from "./_component/columns";
-import { Item } from "@radix-ui/react-dropdown-menu";
 
 const Orders = async ({ params }: { params: { storeId: string } }) => {
   const orders = await db.order.findMany({

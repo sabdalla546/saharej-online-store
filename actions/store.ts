@@ -10,7 +10,7 @@ export const CreateStore = async (values: z.infer<typeof StoreSchema>) => {
   try {
     const user = await currentUser();
     const body = values;
-    const { storeName } = body;
+    const { storeName, description, imageUrl } = body;
     if (!user?.id || user.role !== "ADMIN") {
       return { error: "unauthorized", status: 401 };
     }
@@ -21,6 +21,8 @@ export const CreateStore = async (values: z.infer<typeof StoreSchema>) => {
       data: {
         userId: user.id,
         name: storeName,
+        description,
+        imageUrl,
       },
     });
     return store;

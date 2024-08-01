@@ -31,7 +31,7 @@ export const StoreSchema = z.object({
   description: z.string().min(1, {
     message: "store description must have 1  character",
   }),
-  imageUrl: z.string().optional(),
+  imageUrl: z.string().nullable().optional(),
 });
 export const BillboardSchema = z.object({
   label: z.string().min(1, {
