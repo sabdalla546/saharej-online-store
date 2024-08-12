@@ -1,3 +1,5 @@
+import { Header } from "@/components/auth/header";
+import { MainHeader } from "@/components/main-heading";
 import { db } from "@/lib/db";
 import React from "react";
 
@@ -14,7 +16,13 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
     },
   });
 
-  return <div className="p-5">store name {store?.name}</div>;
+  return (
+    <div className="flex-col">
+      <div className="flex-1 space-y-4 p-8 pt-6">
+        <MainHeader lebel="Dashboard" description="OverView of your store" />
+      </div>
+    </div>
+  );
 };
 
 export default DashboardPage;
