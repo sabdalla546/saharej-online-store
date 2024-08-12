@@ -12,18 +12,18 @@ const OverView: React.FC<overviewProps> = ({ data }) => {
         <XAxis
           dataKey="name"
           stroke="#fd6004"
-          fontSize={12}
+          fontSize={14}
           tickLine={false}
           axisLine={false}
         />
         <YAxis
           stroke="#fd6004"
-          fontSize={12}
+          fontSize={14}
           tickLine={false}
           axisLine={false}
           tickFormatter={(value) => `$${value}`}
         />
-        <Bar dataKey="total" fill="#3498db" radius={[4, 4, 0, 0]} />
+        <Bar dataKey="total" fill="#0c7da0" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
