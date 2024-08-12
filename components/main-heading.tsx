@@ -15,13 +15,20 @@ export const MainHeader = ({ lebel, description }: HeaderProps) => {
     <div>
       <h1
         className={cn(
-          "text-xs font-bold tracking-tigh md:text-3xl",
+          "text-xl font-bold tracking-tigh md:text-3xl",
           font.className
         )}
       >
         {lebel}
       </h1>
-      <p className="text-muted-foreground">{description}</p>
+      <p
+        className="
+      text-xs
+      md:text-xl
+      text-muted-foreground"
+      >
+        {description}
+      </p>
     </div>
   );
 };
