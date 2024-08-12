@@ -40,7 +40,7 @@ const LayoutDashboard = async ({ children, params }: LayoutDashboardProps) => {
           <div>
             <LeftSideNavBar />
           </div>
-          <div className="flex-1 ">{children}</div>
+          <div className="flex-1 overflow-x-scroll">{children}</div>
         </div>
       </>
     </SessionProvider>
