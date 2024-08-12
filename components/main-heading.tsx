@@ -13,7 +13,12 @@ interface HeaderProps {
 export const MainHeader = ({ lebel, description }: HeaderProps) => {
   return (
     <div>
-      <h1 className={cn("text-3xl font-bold tracking-tigh", font.className)}>
+      <h1
+        className={cn(
+          "text-xs font-bold tracking-tigh md:text-3xl",
+          font.className
+        )}
+      >
         {lebel}
       </h1>
       <p className="text-muted-foreground">{description}</p>
