@@ -48,8 +48,8 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div>
-      <div className="flex items-center py-4 overflow-x-scroll">
+    <div className="overflow-x-scroll">
+      <div className="flex items-center py-4 ">
         <Input
           placeholder={`Filter ${searchKey}`}
           value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ""}
