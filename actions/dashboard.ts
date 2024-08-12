@@ -23,3 +23,23 @@ export const getTotalRevenue = async (storeId: string) => {
 
   return totalRevenue;
 };
+export const getSalesCount = async (storeId: string) => {
+  const salesCount = await db.order.count({
+    where: {
+      storeId,
+      isPaid: true,
+    },
+  });
+
+  return salesCount;
+};
+export const getStockCount = async (storeId: string) => {
+  const stockCount = await db.product.count({
+    where: {
+      storeId,
+      isArchived: false,
+    },
+  });
+
+  return stockCount;
+};
