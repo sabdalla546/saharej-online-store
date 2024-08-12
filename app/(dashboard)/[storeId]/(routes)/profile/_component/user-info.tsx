@@ -15,15 +15,15 @@ const UserInfo = ({ user, label }: UserInfoProps) => {
   const { update } = useSession();
   const [isPending, startTransition] = useTransition();
 
-  const onClick = () => {
+  /* const onClick = () => {
     startTransition(() => {
       setting({
-        name: "new name",
+        name: user?.name,
       }).then(() => {
         update();
       });
     });
-  };
+  };*/
   return (
     <div className="flex flex-col gap-y-3">
       <Card>
