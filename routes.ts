@@ -2,14 +2,18 @@
  *puplic routes
  *@type {string[]}
  */
-export const publicRoutes = ["/", "/api/:path*", "/auth/new-verification"];
+export const publicRoutes: string[] = [
+  "/",
+  "/api/:path*",
+  "/auth/new-verification",
+];
 
 /**
  *routes use for auth
  *@type {string[]}
  */
 
-export const authRoutes = [
+export const authRoutes: string[] = [
   "/auth/login",
   "/auth/register",
   "/auth/error",
@@ -22,7 +26,7 @@ export const authRoutes = [
  *routes use for auth
  *@type {string}
  */
-export const apiRoutePrefix = "/api/auth";
+export const apiRoutePrefix: string = "/api/auth";
 /**
  *redirect after logged in
  *@type {string}
