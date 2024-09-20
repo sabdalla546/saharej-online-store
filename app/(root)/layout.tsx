@@ -7,6 +7,9 @@ const HomePageLayout = async ({ children }: { children: React.ReactNode }) => {
   if (!user?.id) {
     redirect("/auth/login");
   }
+  if (user.role === "SUPERADMIN") {
+    redirect("/owner");
+  }
   const store = await db.store.findFirst({
     where: {
       userId: user?.id,

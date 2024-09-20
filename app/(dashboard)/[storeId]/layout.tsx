@@ -16,6 +16,7 @@ const LayoutDashboard = async ({ children, params }: LayoutDashboardProps) => {
   if (!user?.id) {
     redirect("/auth/login");
   }
+
   const store = await db.store.findFirst({
     where: {
       id: params.storeId,
