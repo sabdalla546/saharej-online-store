@@ -40,7 +40,7 @@ export const CellActions: React.FC<CellActionProps> = ({ data }) => {
     } catch (error) {
       console.log(error);
       toast.error(
-        "make shue to delete  all products using this category frist"
+        "make shur to delete  all products using this category frist"
       );
     } finally {
       setLoding(false);

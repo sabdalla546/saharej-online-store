@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       });
     }
 
-    const category = db.mainCategory.create({
+    const category = await db.mainCategory.create({
       data: {
         name,
       },
