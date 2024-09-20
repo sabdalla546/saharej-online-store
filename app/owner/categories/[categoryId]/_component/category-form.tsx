@@ -47,13 +47,13 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
   const toastMessage = initialData ? "Category updated" : "Category created";
   const action = initialData ? "ٍSave changes" : "Create";
 
-  const form = useForm<z.infer<typeof CategorySchema>>({
+  const form = useForm<z.infer<typeof MainCategorySchema>>({
     resolver: zodResolver(MainCategorySchema),
     defaultValues: {
       name: initialData?.name,
     },
   });
-  async function onSubmit(values: z.infer<typeof CategorySchema>) {
+  async function onSubmit(values: z.infer<typeof MainCategorySchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log("values", values);
@@ -69,7 +69,7 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
         console.log(response);
       }
 
-      router.push(`/categories`);
+      router.push(`/owner/categories`);
       router.refresh();
       toast.success(toastMessage);
     } catch (error) {
@@ -84,7 +84,7 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
       setLoding(true);
       await axios.delete(`/api/owner/categories/${params.categoryId}`);
       router.refresh();
-      router.push(`/categories`);
+      router.push(`/owner/categories`);
       toast.success("Category is deleted");
     } catch (error) {
       console.log(error);
