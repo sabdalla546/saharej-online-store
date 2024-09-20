@@ -1,7 +1,7 @@
 "use client";
 import { Trash } from "lucide-react";
 import axios from "axios";
-import { CategorySchema } from "@/schemas";
+import { CategorySchema, MainCategorySchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -48,7 +48,7 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
   const action = initialData ? "ٍSave changes" : "Create";
 
   const form = useForm<z.infer<typeof CategorySchema>>({
-    resolver: zodResolver(CategorySchema),
+    resolver: zodResolver(MainCategorySchema),
     defaultValues: {
       name: initialData?.name,
     },
