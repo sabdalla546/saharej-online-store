@@ -13,13 +13,13 @@ const CategoryPage = async ({
   let catgories;
   let billboards;
   try {
-    billboards = await db.billboard.findMany({
+    /*billboards = await db.billboard.findMany({
       where: {
         storeId: params.storeId,
       },
     });
-    console.log("bbbbbbbbb", billboards);
-    catgories = await db.category.findUnique({
+    console.log("bbbbbbbbb", billboards);*/
+    catgories = await db.mainCategory.findUnique({
       where: {
         id: params.categoryId,
       },
@@ -31,7 +31,7 @@ const CategoryPage = async ({
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <CategoryForm initialData={catgories} billboards={billboards} />
+        <CategoryForm initialData={catgories} />
       </div>
     </div>
   );

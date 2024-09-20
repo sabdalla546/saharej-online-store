@@ -34,7 +34,7 @@ export const CellActions: React.FC<CellActionProps> = ({ data }) => {
   const deleteBillboard = async () => {
     try {
       setLoding(true);
-      await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
+      await axios.delete(`/api/stores/categories/${data.id}`);
       router.refresh();
       toast.success("category is deleted");
     } catch (error) {
@@ -67,7 +67,7 @@ export const CellActions: React.FC<CellActionProps> = ({ data }) => {
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={() =>
-              router.push(`/${params.storeId}/categories/${data.id}`)
+              router.push(`/categories/${data.id}`)
             }
           >
             <Edit className="h-4 w-4 mr-2" />
