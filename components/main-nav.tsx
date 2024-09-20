@@ -33,16 +33,16 @@ export const MainNav = ({
       },
 
       {
-        href: `/categories`,
+        href: `/owner/categories`,
         label: "Categories",
         icon: <Layers3 />,
-        active: pathName === `/categories`,
+        active: pathName === `/owner/categories`,
       },
       {
         href: `/supcategories`,
         label: "Sup Categories",
         icon: <Layers3 />,
-        active: pathName === `/supcategories`,
+        active: pathName === `/owner/supcategories`,
       },
     ];
   } else {
