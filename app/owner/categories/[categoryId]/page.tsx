@@ -6,12 +6,10 @@ const CategoryPage = async ({
 }: {
   params: {
     categoryId: string;
-    storeId: string;
   };
 }) => {
-  console.log("ccccccccccccccc", params.storeId);
   let catgories;
-  let billboards;
+
   try {
     /*billboards = await db.billboard.findMany({
       where: {
@@ -24,7 +22,7 @@ const CategoryPage = async ({
         id: params.categoryId,
       },
     });
-    console.log("cattttt", catgories);
+    console.log("cattttt", params.categoryId);
   } catch (error) {
     console.log(error);
   }
