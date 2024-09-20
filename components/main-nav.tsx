@@ -13,72 +13,98 @@ import {
   Tag,
   UserRoundCog,
 } from "lucide-react";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export const MainNav = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) => {
   const pathName = usePathname();
-
+  const user = useCurrentUser();
   const params = useParams();
+  let Routes;
+  if (user?.role === "SUPERADMIN") {
+    Routes = [
+      {
+        href: `/`,
+        label: "Dashboard",
+        icon: <LayoutDashboard />,
+        active: pathName === `/`,
+      },
 
-  const routes = [
-    {
-      href: `/${params.storeId}`,
-      label: "Dashboard",
-      icon: <LayoutDashboard />,
-      active: pathName === `/${params.storeId}`,
-    },
+      {
+        href: `/categories`,
+        label: "Categories",
+        icon: <Layers3 />,
+        active: pathName === `/categories`,
+      },
+      {
+        href: `/supcategories`,
+        label: "Sup Categories",
+        icon: <Layers3 />,
+        active: pathName === `/supcategories`,
+      },
+    ];
+  } else {
+    Routes = [
+      {
+        href: `/${params.storeId}`,
+        label: "Dashboard",
+        icon: <LayoutDashboard />,
+        active: pathName === `/${params.storeId}`,
+      },
 
-    {
-      href: `/${params.storeId}/billboards`,
-      label: "Billboards",
-      icon: <ImagePlus />,
-      active: pathName === `/${params.storeId}/billboards`,
-    },
-    {
-      href: `/${params.storeId}/categories`,
-      label: "Categories",
-      icon: <Layers3 />,
-      active: pathName === `/${params.storeId}/categories`,
-    },
-    {
-      href: `/${params.storeId}/sizes`,
-      label: "Sizes",
-      icon: <PencilRuler />,
-      active: pathName === `/${params.storeId}/sizes`,
-    },
-    {
-      href: `/${params.storeId}/colors`,
-      label: "Colors",
-      icon: <Palette />,
-      active: pathName === `/${params.storeId}/colors`,
-    },
-    {
-      href: `/${params.storeId}/products`,
-      icon: <Tag />,
-      label: "Products",
-      active: pathName === `/${params.storeId}/products`,
-    },
-    {
-      href: `/${params.storeId}/orders`,
-      icon: <ShoppingBag />,
-      label: "Orders",
-      active: pathName === `/${params.storeId}/orders`,
-    },
-    {
-      href: `/${params.storeId}/profile`,
-      icon: <UserRoundCog />,
-      label: "Profile",
-      active: pathName === `/${params.storeId}/profile`,
-    },
-    {
-      href: `/${params.storeId}/settings`,
-      label: "Settings",
-      icon: <Settings />,
-      active: pathName === `/${params.storeId}/settings`,
-    },
-  ];
+      {
+        href: `/${params.storeId}/billboards`,
+        label: "Billboards",
+        icon: <ImagePlus />,
+        active: pathName === `/${params.storeId}/billboards`,
+      },
+      {
+        href: `/${params.storeId}/categories`,
+        label: "Categories",
+        icon: <Layers3 />,
+        active: pathName === `/${params.storeId}/categories`,
+      },
+      {
+        href: `/${params.storeId}/sizes`,
+        label: "Sizes",
+        icon: <PencilRuler />,
+        active: pathName === `/${params.storeId}/sizes`,
+      },
+      {
+        href: `/${params.storeId}/colors`,
+        label: "Colors",
+        icon: <Palette />,
+        active: pathName === `/${params.storeId}/colors`,
+      },
+      {
+        href: `/${params.storeId}/products`,
+        icon: <Tag />,
+        label: "Products",
+        active: pathName === `/${params.storeId}/products`,
+      },
+      {
+        href: `/${params.storeId}/orders`,
+        icon: <ShoppingBag />,
+        label: "Orders",
+        active: pathName === `/${params.storeId}/orders`,
+      },
+      {
+        href: `/${params.storeId}/profile`,
+        icon: <UserRoundCog />,
+        label: "Profile",
+        active: pathName === `/${params.storeId}/profile`,
+      },
+      {
+        href: `/${params.storeId}/settings`,
+        label: "Settings",
+        icon: <Settings />,
+        active: pathName === `/${params.storeId}/settings`,
+      },
+    ];
+  }
+
   return (
     <nav className={cn("flex flex-col items-start  gap-8 ", className)}>
       {routes.map((route) => (
