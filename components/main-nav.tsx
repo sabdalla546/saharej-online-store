@@ -26,10 +26,10 @@ export const MainNav = ({
   if (user?.role === "SUPERADMIN") {
     routes = [
       {
-        href: `/`,
+        href: `/owner`,
         label: "Dashboard",
         icon: <LayoutDashboard />,
-        active: pathName === `/`,
+        active: pathName === `/owner`,
       },
 
       {

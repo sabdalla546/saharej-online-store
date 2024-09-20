@@ -9,7 +9,7 @@ import { z } from "zod";
 import { MainHeader } from "@/components/main-heading";
 
 import { Separator } from "@/components/ui/separator";
-import { Billboard, Category } from "@prisma/client";
+import { Billboard, Category, MainCategory } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -33,13 +33,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 interface CategoryFormProps {
-  initialData: Category | null | undefined;
-  billboards: Billboard[] | null | undefined;
+  initialData: MainCategory | null | undefined;
 }
-export const CategoryForm = ({
-  initialData,
-  billboards,
-}: CategoryFormProps) => {
+export const CategoryForm = ({ initialData }: CategoryFormProps) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoding] = useState(false);
 
@@ -55,7 +51,6 @@ export const CategoryForm = ({
     resolver: zodResolver(CategorySchema),
     defaultValues: {
       name: initialData?.name,
-      billboardId: initialData?.billboardId,
     },
   });
   async function onSubmit(values: z.infer<typeof CategorySchema>) {
@@ -66,17 +61,14 @@ export const CategoryForm = ({
       setLoding(true);
       if (initialData) {
         const response = await axios.patch(
-          `/api/${params.storeId}/categories/${params.categoryId}`,
+          `/api/stores/categories/${params.categoryId}`,
           values
         );
       } else {
-        const response = await axios.post(
-          `/api/${params.storeId}/categories`,
-          values
-        );
+        const response = await axios.post(`/api/stores/categories`, values);
       }
 
-      router.push(`/${params.storeId}/categories`);
+      router.push(`/categories`);
       router.refresh();
       toast.success(toastMessage);
     } catch (error) {
@@ -89,11 +81,9 @@ export const CategoryForm = ({
   const deleteBillboard = async () => {
     try {
       setLoding(true);
-      await axios.delete(
-        `/api/${params.storeId}/categories/${params.categoryId}`
-      );
+      await axios.delete(`/api/stores/categories/${params.categoryId}`);
       router.refresh();
-      router.push(`/${params.storeId}/categories`);
+      router.push(`/categories`);
       toast.success("Category is deleted");
     } catch (error) {
       console.log(error);
@@ -144,40 +134,6 @@ export const CategoryForm = ({
                     />
                   </FormControl>
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="billboardId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Billboard</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="select billboard"
-                        ></SelectValue>
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {billboards?.map((billboard) => {
-                        return (
-                          <SelectItem key={billboard.id} value={billboard.id}>
-                            {billboard.label}
-                          </SelectItem>
-                        );
-                      })}
-                    </SelectContent>
-                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
