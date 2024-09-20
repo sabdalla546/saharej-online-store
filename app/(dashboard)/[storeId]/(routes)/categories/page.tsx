@@ -3,8 +3,14 @@ import { db } from "@/lib/db";
 import { CategoryClient } from "./_component/category-clients";
 import { CategoryColumn } from "./_component/columns";
 
-const CategoriesPage = async () => {
-  const categories = await db.mainCategory.findMany({
+const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
+  const categories = await db.category.findMany({
+    where: {
+      storeId: params.storeId,
+    },
+    include: {
+      billboard: true,
+    },
     orderBy: {
       createdAt: "desc",
     },
@@ -12,7 +18,7 @@ const CategoriesPage = async () => {
   const formatedCategories: CategoryColumn[] = categories.map((categore) => ({
     id: categore.id,
     name: categore.name,
-
+    billboardLabel: categore.billboard.label,
     createdAt: format(categore.createdAt, "MMMM do , yyyy"),
   }));
   return (
