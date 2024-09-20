@@ -22,6 +22,7 @@ const CategoryPage = async ({
         id: params.categoryId,
       },
     });
+
     console.log("cattttt", params.categoryId);
   } catch (error) {
     console.log(error);
