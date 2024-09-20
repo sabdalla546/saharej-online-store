@@ -21,9 +21,7 @@ export const CategoryClient: React.FC<BillboardClientProps> = ({ data }) => {
           lebel={`Categories(${data.length})`}
           description="Manage Categories for all store"
         />
-        <Button
-          onClick={() => router.push(`/categories/new`)}
-        >
+        <Button onClick={() => router.push(`/owner/categories/new`)}>
           <Plus className="mr-2 h-4 w-4" />
           Add new
         </Button>
