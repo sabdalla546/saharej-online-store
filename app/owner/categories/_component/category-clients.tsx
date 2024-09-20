@@ -12,7 +12,7 @@ interface BillboardClientProps {
   data: CategoryColumn[];
 }
 export const CategoryClient: React.FC<BillboardClientProps> = ({ data }) => {
-  //const params = useParams();
+  const params = useParams();
   const router = useRouter();
   return (
     <>
