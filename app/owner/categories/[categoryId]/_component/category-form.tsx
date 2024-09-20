@@ -56,16 +56,17 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
   async function onSubmit(values: z.infer<typeof CategorySchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    // console.log(values);
+    console.log(values);
     try {
       setLoding(true);
       if (initialData) {
         const response = await axios.patch(
-          `/api/stores/categories/${params.categoryId}`,
+          `/api/owner/categories/${params.categoryId}`,
           values
         );
       } else {
-        const response = await axios.post(`/api/stores/categories`, values);
+        const response = await axios.post(`/api/owner/categories`, values);
+        console.log(response);
       }
 
       router.push(`/categories`);
@@ -81,7 +82,7 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
   const deleteBillboard = async () => {
     try {
       setLoding(true);
-      await axios.delete(`/api/stores/categories/${params.categoryId}`);
+      await axios.delete(`/api/owner/categories/${params.categoryId}`);
       router.refresh();
       router.push(`/categories`);
       toast.success("Category is deleted");
