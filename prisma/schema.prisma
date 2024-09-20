@@ -92,6 +92,20 @@ model Category {
  createdAt     DateTime  @default(now())
  updatedAt     DateTime  @updatedAt
 }
+model MainCategory {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  subCategory   SubCategories[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+model SubCategories {
+   id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  mainCategory  MainCategory @relation(fields: [id],references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
 model Size {
  id            String   @id @default(auto()) @map("_id") @db.ObjectId
  storeId       String   @db.ObjectId
