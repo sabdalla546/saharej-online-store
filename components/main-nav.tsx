@@ -22,9 +22,9 @@ export const MainNav = ({
   const pathName = usePathname();
   const user = useCurrentUser();
   const params = useParams();
-  let Routes;
+  let routes;
   if (user?.role === "SUPERADMIN") {
-    Routes = [
+    routes = [
       {
         href: `/`,
         label: "Dashboard",
@@ -46,7 +46,7 @@ export const MainNav = ({
       },
     ];
   } else {
-    Routes = [
+    routes = [
       {
         href: `/${params.storeId}`,
         label: "Dashboard",
