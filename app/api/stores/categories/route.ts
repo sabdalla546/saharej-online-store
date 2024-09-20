@@ -28,3 +28,13 @@ export async function POST(req: Request) {
     return new NextResponse("internal server error", { status: 500 });
   }
 }
+
+export async function GET(req: Request) {
+  try {
+    const categoris = await db.mainCategory.findMany({});
+    return NextResponse.json(categoris);
+  } catch (error) {
+    console.log("mainCategories_GET :", error);
+    return new NextResponse("internal server error", { status: 500 });
+  }
+}
