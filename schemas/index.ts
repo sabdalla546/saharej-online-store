@@ -44,6 +44,7 @@ export const CategorySchema = z.object({
     message: "category name must have 1  character",
   }),
   billboardId: z.string().min(1),
+  isFeatured: z.boolean().default(false).optional(),
 });
 export const MainCategorySchema = z.object({
   name: z.string().min(1, {
