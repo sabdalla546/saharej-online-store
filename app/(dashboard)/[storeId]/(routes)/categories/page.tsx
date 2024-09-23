@@ -19,6 +19,7 @@ const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
     id: categore.id,
     name: categore.name,
     billboardLabel: categore.billboard.label,
+    isFeatuerd: categore.isFeatured,
     createdAt: format(categore.createdAt, "MMMM do , yyyy"),
   }));
   return (
