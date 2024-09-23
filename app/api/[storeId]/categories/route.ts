@@ -13,7 +13,7 @@ export async function POST(
   try {
     const user = await currentUser();
     const body = await req.json();
-    const { name, billboardId } = body;
+    const { name, billboardId, isFeatured } = body;
     if (!user?.id || user.role !== "ADMIN") {
       return new NextResponse("unauthorntcated", { status: 401 });
     }
@@ -47,6 +47,7 @@ export async function POST(
         storeId: params.storeId,
         name,
         billboardId,
+        isFeatured,
       },
     });
     return NextResponse.json(category);
