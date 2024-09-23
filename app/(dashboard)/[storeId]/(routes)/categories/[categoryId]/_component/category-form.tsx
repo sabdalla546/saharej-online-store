@@ -199,7 +199,7 @@ export const CategoryForm = ({
                   <div className="space-y-1 leading-none">
                     Featcured
                     <FormDescription className="m-2 mt-4">
-                      this product willappear in the home page
+                      this category will appear in the home page
                     </FormDescription>
                   </div>
                 </FormItem>
