@@ -55,10 +55,10 @@ export const CategoryForm = ({
 
   const form = useForm<z.infer<typeof CategorySchema>>({
     resolver: zodResolver(CategorySchema),
-    defaultValues: {
-      name: initialData?.name,
-      billboardId: initialData?.billboardId,
-      isFeatured: initialData?.isFeatured || null || undefined,
+    defaultValues: initialData || {
+      name: "",
+      billboardId: "",
+      isFeatured: false,
     },
   });
   async function onSubmit(values: z.infer<typeof CategorySchema>) {
