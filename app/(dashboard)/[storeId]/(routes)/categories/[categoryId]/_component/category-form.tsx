@@ -58,6 +58,7 @@ export const CategoryForm = ({
     defaultValues: {
       name: initialData?.name,
       billboardId: initialData?.billboardId,
+      isFeatured: initialData?.isFeatured,
     },
   });
   async function onSubmit(values: z.infer<typeof CategorySchema>) {
