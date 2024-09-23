@@ -89,7 +89,7 @@ model Category {
  billboard     Billboard    @relation(fields: [billboardId],references: [id])
  name          String
  products      Product[]
- isFeatured    Boolean?
+ isFeatured    Boolean
  createdAt     DateTime  @default(now())
  updatedAt     DateTime  @updatedAt
 }
