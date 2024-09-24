@@ -31,7 +31,7 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const categoris = await db.mainCategory.findMany({});
+    const categoris = await db.mainCategory.findMany();
     return NextResponse.json(categoris);
   } catch (error) {
     console.log("mainCategories_GET :", error);

@@ -9,7 +9,7 @@ import { z } from "zod";
 import { MainHeader } from "@/components/main-heading";
 
 import { Separator } from "@/components/ui/separator";
-import { Billboard, Category } from "@prisma/client";
+import { Billboard, Category, MainCategory } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -37,18 +37,19 @@ import { Checkbox } from "@/components/ui/checkbox";
 interface CategoryFormProps {
   initialData: Category | null | undefined;
   billboards: Billboard[] | null | undefined;
+  mainCategories: MainCategory[] | null;
 }
 export const CategoryForm = ({
   initialData,
   billboards,
+  mainCategories,
 }: CategoryFormProps) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoding] = useState(false);
 
   const params = useParams();
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const featured = searchParams.get("featured");
+
   const title = initialData ? "Edit Category" : "Create Category";
   const description = initialData ? "Edit a Category" : "Add new Category";
   const toastMessage = initialData ? "Category updated" : "Category created";
@@ -134,7 +135,7 @@ export const CategoryForm = ({
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="grid grid-cols-3 gap-10">
-            <FormField
+            {/*<FormField
               control={form.control}
               name="name"
               render={({ field }) => (
@@ -148,6 +149,40 @@ export const CategoryForm = ({
                     />
                   </FormControl>
 
+                  <FormMessage />
+                </FormItem>
+              )}
+            />*/}
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Category</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="select Category"
+                        ></SelectValue>
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {mainCategories?.map((cat) => {
+                        return (
+                          <SelectItem key={cat.id} value={cat.name}>
+                            {cat.name}
+                          </SelectItem>
+                        );
+                      })}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
