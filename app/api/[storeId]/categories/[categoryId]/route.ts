@@ -17,6 +17,7 @@ export async function GET(
       },
       include: {
         billboard: true,
+        products: true,
       },
     });
     return NextResponse.json(category);
@@ -33,7 +34,7 @@ export async function PATCH(
   try {
     const user = await currentUser();
     const body = await req.json();
-    const { name, billboardId,isFeatured } = body;
+    const { name, billboardId, isFeatured } = body;
     if (!user?.id || user.role !== "ADMIN") {
       return new NextResponse("unauthorized", { status: 401 });
     }
@@ -68,7 +69,7 @@ export async function PATCH(
       data: {
         name,
         billboardId,
-        isFeatured
+        isFeatured,
       },
     });
     return NextResponse.json(category);

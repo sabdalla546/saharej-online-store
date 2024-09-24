@@ -65,6 +65,8 @@ export async function GET(
   }
 ) {
   try {
+    // const isFeatured = req.nextUrl.searchParams.get("featured") || undefined;
+
     if (!params.storeId) {
       return new NextResponse("store id is required", {
         status: 400,
@@ -74,9 +76,11 @@ export async function GET(
     const categoris = await db.category.findMany({
       where: {
         storeId: params.storeId,
+        //isFeatured: Boolean(isFeatured) ? true : undefined,
       },
       include: {
         billboard: true,
+        products: true,
       },
     });
     return NextResponse.json(categoris);

@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { AlertModal } from "@/components/modals/alert-model";
 
@@ -47,7 +47,8 @@ export const CategoryForm = ({
 
   const params = useParams();
   const router = useRouter();
-
+  const searchParams = useSearchParams();
+  const featured = searchParams.get("featured");
   const title = initialData ? "Edit Category" : "Create Category";
   const description = initialData ? "Edit a Category" : "Add new Category";
   const toastMessage = initialData ? "Category updated" : "Category created";
