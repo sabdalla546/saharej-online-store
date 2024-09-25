@@ -46,7 +46,7 @@ export const MainNav = ({
       },
       {
         href: `/owner/flashDeals`,
-        label: "Flash Deals",
+        label: "Sliders",
         icon: <Layers3 />,
         active: pathName === `/owner/flashDeals`,
       },
