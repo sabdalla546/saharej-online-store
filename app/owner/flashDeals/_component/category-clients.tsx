@@ -18,7 +18,7 @@ export const CategoryClient: React.FC<BillboardClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <MainHeader
-          lebel={`Categories(${data.length})`}
+          lebel={`Flash Deals(${data.length})`}
           description="Manage Flash Deals for all store"
         />
         <Button onClick={() => router.push(`/owner/flashDeals/new`)}>
