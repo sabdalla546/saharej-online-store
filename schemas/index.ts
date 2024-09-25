@@ -66,7 +66,7 @@ export const ProductSchema = z.object({
   }),
   description: z.string().min(1),
   categoryId: z.string().min(1),
-  flashdealsId: z.string().min(1).nullable(),
+  flashdealsId: z.string().min(1).optional().nullable(),
   images: z.object({ url: z.string() }).array(),
   sizeId: z.string().min(1),
   colorId: z.string().min(1),

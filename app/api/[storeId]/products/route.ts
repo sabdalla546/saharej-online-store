@@ -25,6 +25,7 @@ export async function POST(
       isArchived,
       isFeatured,
     } = body;
+
     //const formatImages = images.map((item: any) => item.url);
     if (!user?.id || user.role !== "ADMIN") {
       return new NextResponse("unauthorntcated", { status: 401 });

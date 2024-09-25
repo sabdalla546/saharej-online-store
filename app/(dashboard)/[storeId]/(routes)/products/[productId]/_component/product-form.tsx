@@ -260,13 +260,13 @@ export const ProductForm = ({
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
+                    value={field.value || ""}
+                    defaultValue={field?.value || ""}
                   >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue
-                          defaultValue={field.value}
+                          defaultValue={field.value || ""}
                           placeholder="select flashdeals"
                         ></SelectValue>
                       </SelectTrigger>
