@@ -45,7 +45,7 @@ export const MainNav = ({
         active: pathName === `/owner/supcategories`,
       },
       {
-        href: `/flashDeals`,
+        href: `/owner/flashDeals`,
         label: "Flash Deals",
         icon: <Layers3 />,
         active: pathName === `/owner/flashDeals`,
