@@ -40,7 +40,7 @@ export const MainNav = ({
       },
       {
         href: `/supcategories`,
-        label: "Sup Categories",
+        label: "Sub Categories",
         icon: <Layers3 />,
         active: pathName === `/owner/supcategories`,
       },
