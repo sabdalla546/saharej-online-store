@@ -71,6 +71,7 @@ export const ProductForm = ({
       price: "0",
       images: [],
       categoryId: "",
+      flashdealsId: "",
       colorId: "",
       sizeId: "",
       isArchived: false,
