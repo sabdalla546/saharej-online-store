@@ -44,6 +44,7 @@ export async function PATCH(
       sizeId,
       colorId,
       categoryId,
+      flashdealsId,
       isArchived,
       isFeatured,
     } = body;
@@ -114,6 +115,7 @@ export async function PATCH(
         sizeId,
         colorId,
         categoryId,
+        flashdealsId,
         isArchived,
         isFeatured,
       },
