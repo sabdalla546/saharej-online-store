@@ -44,6 +44,12 @@ export const MainNav = ({
         icon: <Layers3 />,
         active: pathName === `/owner/supcategories`,
       },
+      {
+        href: `/flash`,
+        label: "Flash Deals",
+        icon: <Layers3 />,
+        active: pathName === `/owner/flashDeals`,
+      },
     ];
   } else {
     routes = [

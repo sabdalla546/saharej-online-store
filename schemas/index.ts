@@ -51,12 +51,22 @@ export const MainCategorySchema = z.object({
     message: "category name must have 1  character",
   }),
 });
+export const FlashDealsSchema = z.object({
+  name: z.string().min(1, {
+    message: "flash  name must have 1  character",
+  }),
+  imgUrl: z.string().min(1),
+  startDate: z.date(),
+  endDate: z.date(),
+  publish: z.boolean().default(false).optional(),
+});
 export const ProductSchema = z.object({
   name: z.string().min(1, {
     message: "category name must have 1  character",
   }),
   description: z.string().min(1),
   categoryId: z.string().min(1),
+  flashdealsId: z.string().min(1).optional(),
   images: z.object({ url: z.string() }).array(),
   sizeId: z.string().min(1),
   colorId: z.string().min(1),

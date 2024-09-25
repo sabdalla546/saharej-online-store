@@ -100,6 +100,17 @@ model MainCategory {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
+model FlashDeals {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  startDate      DateTime
+  endDate        DateTime
+  products      Product[]
+  imgUrl         String
+  publish        Boolean
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
 model SubCategories {
    id            String   @id @default(auto()) @map("_id") @db.ObjectId
   name          String
@@ -128,11 +139,13 @@ model Color {
  updatedAt     DateTime  @updatedAt
 }
 model Product {
- id            String    @id @default(auto()) @map("_id") @db.ObjectId
+ id             String    @id @default(auto()) @map("_id") @db.ObjectId
  storeId        String   @db.ObjectId
  store          Store    @relation(fields: [storeId],references: [id])
  categoryId     String   @db.ObjectId
  category       Category @relation(fields: [categoryId],references: [id])
+ flashdealsId   String?   @db.ObjectId
+ FlashDeals     FlashDeals? @relation(fields: [flashdealsId],references: [id])
  name           String
  description    String
  price          String
