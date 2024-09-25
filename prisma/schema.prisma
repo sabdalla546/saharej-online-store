@@ -105,7 +105,7 @@ model FlashDeals {
   name           String
   startDate      DateTime
   endDate        DateTime
-  products      Product[]
+  products       Product[]
   imgUrl         String
   publish        Boolean
   createdAt      DateTime  @default(now())
@@ -139,13 +139,13 @@ model Color {
  updatedAt     DateTime  @updatedAt
 }
 model Product {
- id             String    @id @default(auto()) @map("_id") @db.ObjectId
- storeId        String   @db.ObjectId
- store          Store    @relation(fields: [storeId],references: [id])
- categoryId     String   @db.ObjectId
- category       Category @relation(fields: [categoryId],references: [id])
- flashdealsId   String?   @db.ObjectId
- FlashDeals     FlashDeals? @relation(fields: [flashdealsId],references: [id])
+ id             String     @id @default(auto()) @map("_id") @db.ObjectId
+ storeId        String     @db.ObjectId
+ store          Store      @relation(fields: [storeId],references: [id])
+ categoryId     String     @db.ObjectId
+ category       Category   @relation(fields: [categoryId],references: [id])
+ flashdealsId   String     @db.ObjectId
+ FlashDeals     FlashDeals @relation(fields: [flashdealsId],references: [id])
  name           String
  description    String
  price          String
