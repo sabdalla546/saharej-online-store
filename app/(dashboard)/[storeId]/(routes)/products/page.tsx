@@ -13,6 +13,7 @@ const Products = async ({ params }: { params: { storeId: string } }) => {
       category: true,
       size: true,
       color: true,
+      FlashDeals: true,
     },
     orderBy: {
       createdAt: "desc",
@@ -24,6 +25,7 @@ const Products = async ({ params }: { params: { storeId: string } }) => {
     description: product.description,
     price: product.price,
     category: product.category.name,
+    flashdeal: product.FlashDeals?.name,
     size: product.size.value,
     color: product.color.value,
     isArchived: product.isArchived,

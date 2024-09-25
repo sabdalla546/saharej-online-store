@@ -91,6 +91,7 @@ export async function POST(
           },
         },
         sizeId,
+        flashdealsId,
         colorId,
         categoryId,
         isArchived,
@@ -127,7 +128,6 @@ export async function GET(
       where: {
         storeId: params.storeId,
         categoryId,
-        flashdealsId,
         colorId,
         sizeId,
         isFeatured: isFeatured ? true : undefined,

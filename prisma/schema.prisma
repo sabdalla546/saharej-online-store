@@ -144,8 +144,8 @@ model Product {
  store          Store      @relation(fields: [storeId],references: [id])
  categoryId     String     @db.ObjectId
  category       Category   @relation(fields: [categoryId],references: [id])
- flashdealsId   String     @db.ObjectId
- FlashDeals     FlashDeals @relation(fields: [flashdealsId],references: [id])
+ flashdealsId   String?     @db.ObjectId
+ FlashDeals     FlashDeals? @relation(fields: [flashdealsId],references: [id])
  name           String
  description    String
  price          String

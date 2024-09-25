@@ -10,7 +10,14 @@ import { ProductSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MainHeader } from "@/components/main-heading";
 import { Separator } from "@/components/ui/separator";
-import { Category, Color, Image, Product, Size } from "@prisma/client";
+import {
+  Category,
+  Color,
+  FlashDeals,
+  Image,
+  Product,
+  Size,
+} from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -43,12 +50,14 @@ interface ProductFormProps {
     | null
     | undefined;
   categories: Category[] | null | undefined;
+  flashDeals: FlashDeals[] | null | undefined;
   sizes: Size[] | null | undefined;
   colors: Color[] | null | undefined;
 }
 export const ProductForm = ({
   initialData,
   categories,
+  flashDeals,
   sizes,
   colors,
 }: ProductFormProps) => {
@@ -232,6 +241,41 @@ export const ProductForm = ({
                         return (
                           <SelectItem key={category.id} value={category.id}>
                             {category.name}
+                          </SelectItem>
+                        );
+                      })}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="flashdealsId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Flash Deals</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="select flashdeals"
+                        ></SelectValue>
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {flashDeals?.map((flash) => {
+                        return (
+                          <SelectItem key={flash.id} value={flash.id}>
+                            {flash.name}
                           </SelectItem>
                         );
                       })}

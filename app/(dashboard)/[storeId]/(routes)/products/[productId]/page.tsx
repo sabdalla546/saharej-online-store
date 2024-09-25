@@ -10,6 +10,7 @@ const ProductPage = async ({
   let categories;
   let colors;
   let sizes;
+  let flashDeals = await db.flashDeals.findMany();
   try {
     categories = await db.category.findMany({
       where: {
@@ -43,6 +44,7 @@ const ProductPage = async ({
         <ProductForm
           initialData={product}
           categories={categories}
+          flashDeals={flashDeals}
           colors={colors}
           sizes={sizes}
         />

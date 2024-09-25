@@ -83,7 +83,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         session.user.email = token.email as string;
       }
 
-      console.log(session);
+      //console.log(session);
       return session;
     },
     async jwt({ token }) {

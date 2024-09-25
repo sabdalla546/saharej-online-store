@@ -15,6 +15,9 @@ export async function GET(
       where: {
         id: params.flashdealsId,
       },
+      include: {
+        products: true,
+      },
     });
     return NextResponse.json(flashDeals);
   } catch (error) {

@@ -13,6 +13,7 @@ export type ProductsColumn = {
   size: string;
   color: string;
   price: string;
+  flashdeal?: string;
   isFeatured: boolean;
   isArchived: boolean;
   createdAt: string;
