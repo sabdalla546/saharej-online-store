@@ -138,11 +138,11 @@ export const CategoryForm = ({ initialData }: FlasDealsFormProps) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category name</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="category name"
+                      placeholder="Flash Deal name"
                       {...field}
                     />
                   </FormControl>
@@ -182,9 +182,6 @@ export const CategoryForm = ({ initialData }: FlasDealsFormProps) => {
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
                         initialFocus
                       />
                     </PopoverContent>
@@ -226,9 +223,6 @@ export const CategoryForm = ({ initialData }: FlasDealsFormProps) => {
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
                         initialFocus
                       />
                     </PopoverContent>
@@ -275,7 +269,7 @@ export const CategoryForm = ({ initialData }: FlasDealsFormProps) => {
                   <div className="space-y-1 leading-none">
                     Publish
                     <FormDescription className="m-2 mt-4">
-                      this category will appear in the home page
+                      this flash deals will appear in the home page
                     </FormDescription>
                   </div>
                 </FormItem>
