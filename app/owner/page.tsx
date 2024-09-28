@@ -1,7 +1,7 @@
 const OwnerPage = () => {
   return (
     <>
-      <p>super admin</p>
+      <p> hello super admin</p>
     </>
   );
 };
