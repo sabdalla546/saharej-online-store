@@ -12,7 +12,7 @@ export const sendVervicationEmail = async (email: string, token: string) => {
     // console.log(token);
     console.log(conformationLink);
     await resend.emails.send({
-      from: "saharej.com",
+      from: "mail@saharej.com",
       to: [email],
       subject: "Confirm your email",
       html: `<p>
@@ -30,7 +30,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     // console.log(token);
     console.log(conformationLink);
     await resend.emails.send({
-      from: "saharej.com",
+      from: "mail@saharej.com",
       to: [email],
       subject: "reset your password",
       html: `<p>
@@ -44,7 +44,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   await resend.emails.send({
-    from: "saharej.com",
+    from: "mail@saharej.com",
     to: [email],
     subject: "2FA Code",
     html: `<p>
