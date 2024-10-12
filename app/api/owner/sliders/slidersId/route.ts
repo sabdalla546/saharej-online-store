@@ -38,7 +38,7 @@ export async function PATCH(
       return new NextResponse("unauthorized", { status: 401 });
     }
     if (!name) {
-      return new NextResponse("category name  is  required", {
+      return new NextResponse("sliders name  is  required", {
         status: 400,
       });
     }

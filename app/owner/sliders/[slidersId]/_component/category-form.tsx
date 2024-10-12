@@ -1,7 +1,7 @@
 "use client";
 import { Trash } from "lucide-react";
 import axios from "axios";
-import { FlashDealsSchema, SlidersSchema } from "@/schemas";
+import {  SlidersSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -9,7 +9,7 @@ import { z } from "zod";
 import { MainHeader } from "@/components/main-heading";
 
 import { Separator } from "@/components/ui/separator";
-import { FlashDeals, Sliders } from "@prisma/client";
+import {  Sliders } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import {
   Form,
