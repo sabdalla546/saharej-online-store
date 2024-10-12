@@ -60,6 +60,15 @@ export const FlashDealsSchema = z.object({
   endDate: z.date(),
   publish: z.boolean().default(false).optional(),
 });
+export const SlidersSchema = z.object({
+  name: z.string().min(1, {
+    message: "flash  name must have 1  character",
+  }),
+  imgUrl: z.string().min(1),
+  startDate: z.date(),
+  endDate: z.date(),
+  publish: z.boolean().default(false).optional(),
+});
 export const ProductSchema = z.object({
   name: z.string().min(1, {
     message: "category name must have 1  character",

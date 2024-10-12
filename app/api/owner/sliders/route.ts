@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       });
     }
 
-    const flashDeals = await db.flashDeals.create({
+    const sliders = await db.sliders.create({
       data: {
         name,
         startDate,
@@ -41,23 +41,23 @@ export async function POST(req: Request) {
         publish,
       },
     });
-    return NextResponse.json(flashDeals);
+    return NextResponse.json(sliders);
   } catch (error) {
-    console.log("Main-CATEGORY_POST :", error);
+    console.log("sliders_POST :", error);
     return new NextResponse("internal server error", { status: 500 });
   }
 }
 
 export async function GET(req: Request) {
   try {
-    const flashDeals = await db.flashDeals.findMany({
+    const sliders = await db.sliders.findMany({
       where: {
         publish: true,
       },
     });
-    return NextResponse.json(flashDeals);
+    return NextResponse.json(sliders);
   } catch (error) {
-    console.log("FlSHdEALS_GET :", error);
+    console.log("slidersS_GET :", error);
     return new NextResponse("internal server error", { status: 500 });
   }
 }
