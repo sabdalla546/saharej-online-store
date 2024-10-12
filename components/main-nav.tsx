@@ -39,7 +39,7 @@ export const MainNav = ({
         active: pathName === `/owner/categories`,
       },
       {
-        href: `/sliders`,
+        href: `/owner/sliders`,
         label: "sliders",
         icon: <Layers3 />,
         active: pathName === `/owner/sliders`,
