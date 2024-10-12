@@ -10,8 +10,16 @@ const ProductPage = async ({
   let categories;
   let colors;
   let sizes;
-  let flashDeals = await db.flashDeals.findMany();
-  let sliders = await db.sliders.findMany();
+  let flashDeals = await db.flashDeals.findMany({
+    where: {
+      publish: true,
+    },
+  });
+  let sliders = await db.sliders.findMany({
+    where: {
+      publish: true,
+    },
+  });
   try {
     categories = await db.category.findMany({
       where: {
