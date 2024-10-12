@@ -17,6 +17,7 @@ import {
   Image,
   Product,
   Size,
+  Sliders,
 } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,6 +52,7 @@ interface ProductFormProps {
     | undefined;
   categories: Category[] | null | undefined;
   flashDeals: FlashDeals[] | null | undefined;
+  sliders: Sliders[] | null | undefined;
   sizes: Size[] | null | undefined;
   colors: Color[] | null | undefined;
 }
@@ -58,6 +60,7 @@ export const ProductForm = ({
   initialData,
   categories,
   flashDeals,
+  sliders,
   sizes,
   colors,
 }: ProductFormProps) => {
@@ -81,6 +84,7 @@ export const ProductForm = ({
       images: [],
       categoryId: "",
       flashdealsId: "",
+      slidersId: "",
       colorId: "",
       sizeId: "",
       isArchived: false,
@@ -273,6 +277,40 @@ export const ProductForm = ({
                     </FormControl>
                     <SelectContent>
                       {flashDeals?.map((flash) => {
+                        return (
+                          <SelectItem key={flash.id} value={flash.id}>
+                            {flash.name}
+                          </SelectItem>
+                        );
+                      })}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="slidersId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Sliders</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value || ""}
+                    defaultValue={field.value || ""}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value || ""}
+                          placeholder="select sliders"
+                        ></SelectValue>
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {sliders?.map((flash) => {
                         return (
                           <SelectItem key={flash.id} value={flash.id}>
                             {flash.name}
