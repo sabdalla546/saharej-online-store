@@ -73,7 +73,7 @@ export const CategoryForm = ({ initialData }: FlasDealsFormProps) => {
       setLoding(true);
       if (initialData) {
         const response = await axios.patch(
-          `/api/owner/flashDeals/${params.categoryId}`,
+          `/api/owner/flashDeals/${params.flashdealsId}`,
           values
         );
       } else {
@@ -94,7 +94,7 @@ export const CategoryForm = ({ initialData }: FlasDealsFormProps) => {
   const deleteBillboard = async () => {
     try {
       setLoding(true);
-      await axios.delete(`/api/owner/flashDeals/${params.categoryId}`);
+      await axios.delete(`/api/owner/flashDeals/${params.flashdealsId}`);
       router.refresh();
       router.push(`/owner/flashDeals`);
       toast.success("flashDeals is deleted");
