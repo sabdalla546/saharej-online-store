@@ -14,6 +14,7 @@ import {
   UserRoundCog,
 } from "lucide-react";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import { UserButton } from "./auth/user-button";
 
 export const MainNav = ({
   className,
@@ -113,6 +114,7 @@ export const MainNav = ({
 
   return (
     <nav className={cn("flex flex-col items-start  gap-8 ", className)}>
+      {user?.role === "SUPERADMIN" && <UserButton />}
       {routes.map((route) => (
         <Link
           key={route.href}
