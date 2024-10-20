@@ -22,7 +22,7 @@ export default auth((req) => {
   const isPuplicRoutes =
     publicRoutes.includes(nextUrl.pathname) || "/api/:path*";
   const isAuthRoutes = authRoutes.includes(nextUrl.pathname);
-  if (isApiAuthRoute) {
+  /* if (isApiAuthRoute) {
     return;
   }
 
@@ -34,7 +34,7 @@ export default auth((req) => {
   }
   if (!isLoggedIn && !isPuplicRoutes) {
     return Response.redirect(new URL("/auth/login", nextUrl));
-  }
+  }*/
   //console.log(isLoggedIn, isApiAuthRoute, isPuplicRoutes, isAuthRoutes);
   return;
 });
