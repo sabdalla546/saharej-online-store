@@ -16,6 +16,7 @@ export default auth((req) => {
   console.log("Route", req.nextUrl.pathname);
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
+  // const t = !!req.auth?.user.role;
   console.log(isLoggedIn);
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiRoutePrefix);
   const isPuplicRoutes =
@@ -24,6 +25,7 @@ export default auth((req) => {
   if (isApiAuthRoute) {
     return;
   }
+  /*
   if (isAuthRoutes) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
@@ -32,7 +34,7 @@ export default auth((req) => {
   }
   if (!isLoggedIn && !isPuplicRoutes) {
     return Response.redirect(new URL("/auth/login", nextUrl));
-  }
+  }*/
   //console.log(isLoggedIn, isApiAuthRoute, isPuplicRoutes, isAuthRoutes);
   return;
 });
