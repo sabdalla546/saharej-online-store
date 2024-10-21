@@ -82,13 +82,15 @@ export async function POST(req: Request) {
     }
   }
   try {
-    await signIn("credentials", {
+    const login = await signIn("credentials", {
       email,
       password,
+      redirect: false,
     });
     return NextResponse.json({
-      success: "logined",
+      success: "success",
       token: vervicationEmail,
+      user: existingUser,
       status: 200,
     });
   } catch (error) {

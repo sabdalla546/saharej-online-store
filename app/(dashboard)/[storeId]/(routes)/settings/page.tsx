@@ -2,6 +2,7 @@ import { currentUser } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import { SettingForm } from "./_component/setting-form";
+import axios from "axios";
 
 interface SettingsProps {
   params: { storeId: string };
@@ -9,6 +10,7 @@ interface SettingsProps {
 
 const Settings = async ({ params }: SettingsProps) => {
   const user = await currentUser();
+
   if (!user?.id || user.role !== "ADMIN") {
     redirect("/auth/login");
   }

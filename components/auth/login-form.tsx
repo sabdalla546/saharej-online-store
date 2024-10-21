@@ -47,7 +47,7 @@ export const LoginForm = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(`/api/auth/login`, values);
-
+      console.log(res);
       setIsSuccess(res.data.success);
       setIsError(res.data.error);
 

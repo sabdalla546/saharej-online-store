@@ -17,29 +17,32 @@ export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
   // const t = !!req.auth?.user.role;
+
   console.log(isLoggedIn);
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiRoutePrefix);
-  const isPuplicRoutes =
-    publicRoutes.includes(nextUrl.pathname) ||
-    nextUrl.pathname.startsWith("/api/");
+  const isPuplicRoutes = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoutes = authRoutes.includes(nextUrl.pathname);
-  if (isPuplicRoutes) {
-    return;
-  }
   if (isApiAuthRoute) {
     return;
-  }
-
-  if (isAuthRoutes) {
+  } else if (
+    isAuthRoutes &&
+    (req.auth?.user.role === "ADMIN" || req.auth?.user.role === "SUPERADMIN")
+  ) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     }
+    return;
+  } else if (isAuthRoutes && req.auth?.user.role === "USER") {
     return;
   }
   if (!isLoggedIn && !isPuplicRoutes) {
     return Response.redirect(new URL("/auth/login", nextUrl));
   }
   //console.log(isLoggedIn, isApiAuthRoute, isPuplicRoutes, isAuthRoutes);
+  console.log("login", isLoggedIn);
+  console.log("is auth route", isAuthRoutes);
+  console.log("is api auth", isApiAuthRoute);
+  console.log("is public", isPuplicRoutes);
   return;
 });
 
