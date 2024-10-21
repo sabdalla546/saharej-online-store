@@ -83,7 +83,7 @@ export async function POST(req: Request) {
     }
   }
   try {
-    await signIn("credentials", {
+    const login = await signIn("credentials", {
       email,
       password,
       redirect: false,
@@ -93,6 +93,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: "success",
       token: vervicationEmail,
+      res: login,
       user: existingUser,
       status: 200,
     });
