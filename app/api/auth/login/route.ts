@@ -82,16 +82,10 @@ export async function POST(req: Request) {
     }
   }
   try {
-    const login = await signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
       redirect: false,
-    }).then((result) => {
-      if (result.error) {
-        alert("invalid");
-      } else {
-        window.location.replace("/");
-      }
     });
     return NextResponse.json({
       success: "success",
