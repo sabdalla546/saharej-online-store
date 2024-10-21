@@ -53,6 +53,8 @@ export const LoginForm = () => {
 
       if (!res.data.err) {
         window.location.reload();
+      } else {
+        window.location.replace("/");
       }
       form.reset();
     } catch (err) {
