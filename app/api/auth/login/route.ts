@@ -86,6 +86,12 @@ export async function POST(req: Request) {
       email,
       password,
       redirect: false,
+    }).then((result) => {
+      if (result.error) {
+        alert("invalid");
+      } else {
+        window.location.replace("/");
+      }
     });
     return NextResponse.json({
       success: "success",
