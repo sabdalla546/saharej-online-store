@@ -6,6 +6,7 @@ import {
   apiRoutePrefix,
   DEFAULT_LOGIN_REDIRECT,
 } from "@/routes";
+import { NextResponse } from "next/server";
 const { auth } = NextAuth(authConfig);
 export default auth((req) => {
   /*const isLoggedIn = !!req.auth;
@@ -24,17 +25,16 @@ export default auth((req) => {
   const isAuthRoutes = authRoutes.includes(nextUrl.pathname);
   if (isApiAuthRoute) {
     return;
-  } else if (
-    isAuthRoutes &&
-    (req.auth?.user.role === "ADMIN" || req.auth?.user.role === "SUPERADMIN")
-  ) {
+  } else if (isAuthRoutes) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     }
     return;
-  } else if (isAuthRoutes && req.auth?.user.role === "USER") {
-    return;
   }
+  //&&req.auth?.user.role === "ADMIN" || req.auth?.user.role === "SUPERADMIN";
+  /*else if (isAuthRoutes && req.auth?.user.role === "USER") {
+    return;
+  }*/
   if (!isLoggedIn && !isPuplicRoutes) {
     return Response.redirect(new URL("/auth/login", nextUrl));
   }
@@ -43,7 +43,7 @@ export default auth((req) => {
   console.log("is auth route", isAuthRoutes);
   console.log("is api auth", isApiAuthRoute);
   console.log("is public", isPuplicRoutes);
-  return;
+  return NextResponse.next();
 });
 
 // Optionally, don't invoke Middleware on some paths

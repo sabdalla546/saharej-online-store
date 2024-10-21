@@ -14,6 +14,7 @@ import {
   generateVerificationToken,
 } from "@/lib/tokens";
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 export async function POST(req: Request) {
   const body = await req.json();
   const validatedField = LoginSchema.safeParse(body);
@@ -86,7 +87,9 @@ export async function POST(req: Request) {
       email,
       password,
       redirect: false,
+      // redirect: false,
     });
+    revalidatePath("/");
     return NextResponse.json({
       success: "success",
       token: vervicationEmail,

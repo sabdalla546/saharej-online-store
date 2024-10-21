@@ -50,7 +50,7 @@ export const LoginForm = () => {
       console.log(res);
       setIsSuccess(res.data.success);
       setIsError(res.data.error);
-
+      console.log(res);
       if (!res.data.err) {
         window.location.reload();
       }
